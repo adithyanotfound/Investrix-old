@@ -1,0 +1,1 @@
+export const CHATBOT_URL="http://localhost:5000";

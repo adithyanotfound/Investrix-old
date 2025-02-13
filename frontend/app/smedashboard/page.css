@@ -1,0 +1,198 @@
+.investor-dashboard {
+    
+    display: grid;
+    margin-top: 100px;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    
+}
+.group {
+    position: relative;
+  }
+.special-border {
+    border: 2px solid transparent;
+    background: linear-gradient(#1a1a1a, #1a1a1a) padding-box,
+                            linear-gradient(45deg, #4CAF50, #8BC34A) border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #ffffff;
+}
+
+.special-border:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+}
+
+.special-note {
+    color: #4CAF50;
+    font-style: italic;
+    margin-top: 8px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+
+  .group-hover\:visible {
+    transition: visibility 0s, opacity 0.2s;
+    opacity: 1;
+  }
+  
+  .invisible {
+    opacity: 0;
+    transition: visibility 0s 0.2s, opacity 0.2s;
+  }
+.dashboard-container{
+    display: grid;
+    margin-top: 100px;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+
+}
+.section-title {
+    text-align:center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.section-subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.applications-list {
+    overflow-y: auto;
+    max-height: calc(100vh - 100px); /* Adjust as needed */
+}
+
+.application-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    height:auto;
+    width:auto;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.company-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.loan-details {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.view-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    align-self: left;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.view-bid{
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    align-self: left;
+    background-color: #99d98c;
+    color: #fff;
+}
+
+.create-application-button {
+
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    align-self: right;
+    justify-self: right;
+    background-color: #28a745;
+    color: #fff;
+}
+
+.no-applications {
+    color: #666;
+    font-size: 16px;
+    font-style: italic;
+}
+
+.chatbot {
+    margin-top: 100px;
+    padding: 20px;
+    overflow-y: auto;
+}
+.chatbot h1{
+    text-align:center;
+    justify-content: center;
+    font-size: 24px;
+    
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .left-side {
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .right-side {
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .left-side,.right-side {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .applications-list {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .chatbot {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .left-side {
+    grid-column: 1 / 2;
+  }
+  
+  .right-side {
+    grid-column: 2 / 3;
+  }
+  
+
+  
