@@ -1,1 +1,1 @@
-export const CHATBOT_URL="http://localhost:5000";
+export const CHATBOT_URL="https://investrix-api.onrender.com";
