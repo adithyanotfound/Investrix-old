@@ -23,7 +23,7 @@ const Modal = ({ isOpen, onClose, onConfirm }: { isOpen: boolean; onClose: () =>
                         <li>Once finalized, payment must be made within 7 days</li>
                         <li className='text-red-700'>Failure to make payment will result in account suspension</li>
                     </ul>
-                    <a href="https://github.com/SkySingh04/Investrix_Hackverse/blob/master/TermsandConditions.md" className="text-blue-500 hover:underline block mt-4">
+                    <a href="https://github.com/adithyanotfound/Investrix/blob/main/frontend/TermsandConditions.md" className="text-blue-500 hover:underline block mt-4">
                         View Full Terms and Conditions
                     </a>
                 </div>
