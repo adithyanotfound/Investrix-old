@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from groclake.modellake import Modellake
+import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 
@@ -8,16 +8,13 @@ app = Flask(__name__)
 CORS(app)
 load_dotenv()
 
-GROCLAKE_API_KEY = os.getenv('GROCLAKE_API_KEY')
-GROCLAKE_ACCOUNT_ID = os.getenv('GROCLAKE_ACCOUNT_ID')
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 
-os.environ['GROCLAKE_API_KEY'] = GROCLAKE_API_KEY
-os.environ['GROCLAKE_ACCOUNT_ID'] = GROCLAKE_ACCOUNT_ID
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY must be set in the .env file")
 
-if not GROCLAKE_API_KEY or not GROCLAKE_ACCOUNT_ID:
-    raise ValueError("GROCLAKE_API_KEY and GROCLAKE_ACCOUNT_ID must be set in the .env file")
-
-model_lake = Modellake()
+genai.configure(api_key=GEMINI_API_KEY)
+model = genai.GenerativeModel('gemini-pro')
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -41,15 +38,14 @@ def chat():
     if not user_input:
         return jsonify({"error": "Message is required"}), 400
 
-    conversation_history = [{"role": "system", "content": full_system_content}]
-    conversation_history.append({"role": "user", "content": full_system_content})
-    conversation_history.append({"role": "user", "content": user_input})
-
     try:
-        payload = {"messages": conversation_history}
-        response = model_lake.chat_complete(payload)
-        bot_reply = response.get("answer", "I'm sorry, I couldn't process that. Please try again.")
-        conversation_history.append({"role": "assistant", "content": bot_reply})
+        # Create the prompt for Gemini
+        prompt = f"{full_system_content}\n\nUser: {user_input}"
+        
+        # Generate response using Gemini
+        response = model.generate_content(prompt)
+        bot_reply = response.text if response.text else "I'm sorry, I couldn't process that. Please try again."
+        
         return jsonify({"response": bot_reply}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
